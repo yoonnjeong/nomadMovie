@@ -10,12 +10,17 @@
     const root = document.getElementById("root");
 
     function App() {
-      const [minutes, setMinutes] = React.useState();
+      const [amount, setAmount] = React.useState();
+      const [flipped, setFliped] = React.useState(false); //버튼으로 시간변환을 변경하기 위해서 선언
       const onChange = (e) => {
-        setMinutes(e.target.value);
+        setAmount(e.target.value);
       };
       const reset = () => {
-        setMinutes(0);
+        setAmount(0);
+      };
+      const onFlip = () => {
+        reset(); //버튼을 누를경우 값이 전환되는걸 방지하기 위해 값을 0으로 만들어준다
+        setFliped((prev) => !prev); //버튼의 값을 불리언으로 전환시켜준다
       };
       return (
         <div>
@@ -23,23 +28,27 @@
           <div>
             <label htmlFor="minutes">Minutes</label>
             <input
-              value={minutes}
+              value={flipped ? amount * 60 : amount}
               type="number"
               id="minutes"
               placeholder="Minutes"
               onChange={onChange}
+              disabled={flipped === true}
             />
           </div>
           <div>
             <label htmlFor="hours">Hours</label>
             <input
-              value={Math.round(minutes / 60)}
+              value={flipped ? amount : Math.round(amount / 60)} //flipped값이 처음에는 false이고 이 때는 분단위를 환산하는게 활성화 되있기 때문에 flipped가 false일 때 분단위 환상하는 식을 적어주고 flipped아 true일 경우에는 시간단휘 환산을 해야하기때문에 값을 그대로 보여준다
               type="number"
               id="hours"
               placeholder="Hours"
+              disabled={flipped === false} //초기에 설정한 flipped값이 false이기 때문에 false === false가 되서 버튼이 disabled된다
+              onChange={onChange}
             />
           </div>
           <button onClick={reset}>Reset</button>
+          <button onClick={onFlip}>Flip</button>
         </div>
       );
     }
