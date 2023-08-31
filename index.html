@@ -53,7 +53,7 @@
       );
     }
     function KmToMiles() {
-      const [amount, setAmount] = React.useState();
+      const [amount, setAmount] = React.useState(); //초기 값 설정하면 input에 초기값이 들어가있음
       const [invert, setInvert] = React.useState(true);
 
       const onChange = (e) => {
@@ -99,6 +99,7 @@
     }
     function App() {
       const [index, setIndex] = React.useState("0");
+
       const onSelect = (e) => {
         setIndex(e.target.value);
       };
@@ -107,7 +108,7 @@
         <div>
           <h1>Super Convertor</h1>
           <select value={index} onChange={onSelect}>
-            {/**/}
+            {/*value={index}는 초기의 value값이 다르게 설정되있어도 값을 맞출수 있도록 설정해줌*/}
             <option value="0">Minutes & Hours</option>
             <option value="1">Km & Miles</option>
           </select>
