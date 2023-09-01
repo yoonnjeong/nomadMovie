@@ -8,12 +8,11 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     const root = document.getElementById("root");
-    function Btn(props) {
+    function Btn({ text }) {
       // console.log(props);
-      console.log(props.text, "re-render");
+
       return (
         <button
-          onClick={props.changeValue}
           style={{
             backgroundColor: "tomato",
             color: "#fff",
@@ -22,16 +21,16 @@
             borderRadius: 10,
           }}
         >
-          {props.text}
+          {text}
         </button>
       );
     }
     function App() {
       const [value, setValue] = React.useState("Save Changes");
-      const changeValue = () => setValue("Revert Changs");
+
       return (
         <div>
-          <Btn text={value} changeValue={changeValue} />
+          <Btn text={value} />
         </div>
       );
     }
