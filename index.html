@@ -8,8 +8,33 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     const root = document.getElementById("root");
+    function Btn(props) {
+      // function Btn({text, big}) {  //이와 같이 객체의 키 값을 꺼내서 적어도 됨
+      console.log(props);
+      return (
+        <button
+          style={{
+            backgroundColor: "tomato",
+            color: "#fff",
+            padding: "10px 20px",
+            border: 0,
+            borderRadius: 10,
+            fontSize: props.big ? "20px" : "15px",
+            // fontSize: big ? "20px" : "15px",
+          }}
+        >
+          {props.text}
+          {/* {text}*/}
+        </button>
+      );
+    }
     function App() {
-      return <div></div>;
+      return (
+        <div>
+          <Btn text="Save Changes" big={false} />
+          <Btn text="Confirm" big={true} />
+        </div>
+      );
     }
 
     ReactDOM.render(<App />, root);
