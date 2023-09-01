@@ -9,30 +9,32 @@
   <script type="text/babel">
     const root = document.getElementById("root");
     function Btn(props) {
-      // function Btn({text, big}) {  //이와 같이 객체의 키 값을 꺼내서 적어도 됨
-      console.log(props);
+      // console.log(props);
+      console.log(props.text, "re-render");
       return (
         <button
+          onClick={props.changeValue}
           style={{
             backgroundColor: "tomato",
             color: "#fff",
             padding: "10px 20px",
             border: 0,
             borderRadius: 10,
-            fontSize: props.big ? "20px" : "15px",
-            // fontSize: big ? "20px" : "15px",
           }}
         >
           {props.text}
-          {/* {text}*/}
         </button>
       );
     }
+    const MemorizedBtn = React.memo(Btn); //이걸 적으면 상위의 부모 컴포넌트가 리렌더링 되더라도 하위 자식컴포넌트가 변뎡되는게 없으면 자식에서 리렌더링 되지 않는다
     function App() {
+      //부모 컴포넌트에서 state가 변경되면 하위 자식컴포넌트가 변경되지 않더라도 리렌더링 된다. 이럴 경우에 react memo를 쓴다
+      const [value, setValue] = React.useState("Save Changes");
+      const changeValue = () => setValue("Revert Changs");
       return (
         <div>
-          <Btn text="Save Changes" big={false} />
-          <Btn text="Confirm" big={true} />
+          <MemorizedBtn text={value} changeValue={changeValue} />
+          <MemorizedBtn text="Continue" />
         </div>
       );
     }
