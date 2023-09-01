@@ -26,15 +26,12 @@
         </button>
       );
     }
-    const MemorizedBtn = React.memo(Btn); //이걸 적으면 상위의 부모 컴포넌트가 리렌더링 되더라도 하위 자식컴포넌트가 변뎡되는게 없으면 자식에서 리렌더링 되지 않는다
     function App() {
-      //부모 컴포넌트에서 state가 변경되면 하위 자식컴포넌트가 변경되지 않더라도 리렌더링 된다. 이럴 경우에 react memo를 쓴다
       const [value, setValue] = React.useState("Save Changes");
       const changeValue = () => setValue("Revert Changs");
       return (
         <div>
-          <MemorizedBtn text={value} changeValue={changeValue} />
-          <MemorizedBtn text="Continue" />
+          <Btn text={value} changeValue={changeValue} />
         </div>
       );
     }
