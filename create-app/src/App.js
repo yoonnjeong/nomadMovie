@@ -12,19 +12,9 @@ function App() {
     }
     setToDo("");
 
-    // setToDos(function (currentArray) {
-    //   return;
-    // }); //아래와 같은 내용이다
-
     setToDos((currentArray) => [toDo, ...toDos]);
-    console.log(toDos);
-
-    // setToDos((currentArray) => {
-    //   const newArray = [toDo, ...currentArray];
-    //   console.log(newArray);
-    //   return newArray;
-    // });   //return처리를 해주면 입력한 값이 바로 배열에 추가되서 출력된다
   };
+  console.log(toDos);
 
   return (
     <div>
@@ -38,6 +28,12 @@ function App() {
         />
         <button>Add To Do</button>
       </form>
+      <hr />
+      <ul>
+        {toDos.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
     </div>
   );
 }
