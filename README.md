@@ -1,6 +1,6 @@
 # nomadMovie
 
-##gh-page 만들기
+## gh-page 만들기
 
 1. 프로젝트의 소스 코드 최적화 및 배포를 위해 터미널에 npm run build 실행
 2. package.json 파일 마지막 하단에 "homepage": "https://(깃허브 아이디).github.io/(깃허브에 올라간 파일이름)" 적기
