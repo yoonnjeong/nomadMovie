@@ -1,4 +1,4 @@
-h3 {display: flex; justify-content: center; align-items: center; width: 230px; height: 345px; background-color: rgba(0, 0, 0, .2);}
+h4 {position: relative; top: -50px; margin: 0; display: flex; justify-content: center; align-items: center; width: 150px; height: 225px; background-color: rgba(0, 0, 0, .4);}
 .year {display: block; margin-top: 30px; font-size: 25px; text-align: center;}
 .fx_wrap {display: flex; align-items: center; justify-content: center;}
 .datail_tit {margin-right: 20px;}
@@ -6,3 +6,5 @@ h3 {display: flex; justify-content: center; align-items: center; width: 230px; h
 .center {position: relative; text-align: center;}
 .rate {position: absolute; left: calc(50% - 240px); bottom: 15px; font-size: 20px; color: #fff;}
 .time {position: absolute; right: calc(50% - 240px); bottom: 15px; font-size: 18px; color: #fff;}
+.text_sub {padding: 20px;}
+.big_txt {padding: 20px;}
